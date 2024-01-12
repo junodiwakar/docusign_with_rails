@@ -1,0 +1,6 @@
+<div class="container padding-left-right">
+    <%= form_tag({controller: 'pdf_forms', action: 'create'}, multipart: true) do %>
+    <%= file_field_tag :pdf_data %>
+    <%= submit_tag 'Submit' %>
+    <% end %>
+</div>

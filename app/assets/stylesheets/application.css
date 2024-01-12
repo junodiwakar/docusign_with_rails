@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+body{
+    background-color: #f7f7f7;
+}
+.form-style{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.bg-color-blue{
+    background-color: #4884f9;
+    color:white
+}
+.text_area_enquiry{
+padding: 25px;
+font-size: 34px;
+line-height: 46px;
+font-weight: bold;
+}
+input{
+    width: 100%;
+    padding: 6px;
+    font-size: 13px;
+    border: 1px solid #dfd7d7;
+    border-radius: 5px;
+}
+
+.card-body{
+    background-color: white;
+}
+
+.lets_connect{
+    text-align: center;
+    font-weight: bold;
+    font-size: 34px;;
+}
+.lets_connect span{
+    color: #4884f9;
+    font-weight: lighter;
+}
+.submit-button{
+    background-color: #4884f9;
+    color:white;
+    border: none;
+}
+.padding-left-right{
+    padding: 0 260px;
+}
+.logo-image{
+    height: 25px;
+}

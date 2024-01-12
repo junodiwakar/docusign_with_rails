@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="main-block">
+		<p class="lets_connect">Let's <span>Connect!</span></p>
+		<div class='row no-gutters outer-border mg-0 form-style'>
+			<div class="col-md-7 pd-0">
+				<div class="card-body">
+					<%= form_with(model: @user_detail, url: user_details_path, method: :post) do |form| %>
+						<% if @user_detail.errors.any? %>
+							<div style="color: red">
+								<h4>Oops! something went wrong</h4>
+								<ul>
+									<% @user_detail.errors.each do |error| %>
+										<li><%= error.full_message %></li>
+									<% end %>
+								</ul>
+							</div>
+						<% end %>
+					<div class="row">
+						<div class="col">
+							<%= form.label :full_name %>
+							<%= form.text_field :full_name, placeholder: "Enter full name" %>
+						</div>
+
+						<div class="col">
+							<%= form.label :email %>
+							<%= form.text_field :email, placeholder: "Enter email"  %>
+						</div>
+					</div>	
+					<div class="row mt-2">
+						<div class="col">
+							<%= form.label :phone_no %>
+							<%= form.text_field :phone_no, placeholder: "Enter phone no."  %>
+						</div>
+
+						<div class="col">
+							<%= form.label :address %>
+							<%= form.text_field :address,placeholder: "Enter your address" %>
+						</div>
+					</div>
+					<div class="actions mt-2">
+						<%= form.submit "Create User Detail",class: "submit-button" %>
+					</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="col-md-5 bg-color-blue">
+        <div class="text_area_enquiry">
+          <p>We are responsible <br>to make your idea <br>into your reality</p>
+        </div>
+      </div>
+		</div>
+	</div>
+</div>
+
+
