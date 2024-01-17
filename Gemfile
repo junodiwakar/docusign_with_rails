@@ -68,3 +68,4 @@ end
 gem 'devise'
 gem 'pdf-forms'
 gem 'byebug'
+gem 'docusign_esign'

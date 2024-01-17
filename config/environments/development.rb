@@ -73,5 +73,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # Raise error when a before_action's only/except options reference missing actions
-  config.action_controller.raise_on_missing_callback_actions = true
+  # config.action_controller.raise_on_missing_callback_actions = true
+  # config.docusign_integration_key = '57cb9bb1-fff7-41c8-87ef-47847cc3e8a5'
+  # config.docusign_client_id = '57cb9bb1-fff7-41c8-87ef-47847cc3e8a5'
 end

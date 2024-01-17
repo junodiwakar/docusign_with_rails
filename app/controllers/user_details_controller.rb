@@ -7,10 +7,9 @@ class UserDetailsController < ApplicationController
 		@user_detail = UserDetail.new(user_detail_params)
 
 		if @user_detail.save
-		filled_pdf_io = fill_pdf_form(@user_detail)
-		@user_detail.filled_pdf.attach(io: filled_pdf_io, filename: "filled_form_#{@user_detail.id}.pdf", content_type: 'application/pdf')
-
-		redirect_to @user_detail, notice: 'User detail was successfully created.'
+			filled_pdf_path = fill_pdf_form(@user_detail)
+			redirect_to @user_detail, notice: 'User detail was successfully created.'
+			@user_detail.send_to_docusign
 		else
 			render :new
 		end
@@ -27,19 +26,19 @@ class UserDetailsController < ApplicationController
 	end
 
 	def fill_pdf_form(user)
-		pdf_path = Rails.root.join('app', 'assets', 'pdf', 'original_form.pdf')
-		filled_pdf = Tempfile.new(['filled_form', '.pdf'])
+		pdf_path = Rails.root.join('app', 'assets', 'pdf', 'final_sample.pdf')
+		filled_pdf_path = Rails.root.join('tmp', "t&c-#{user.id}.pdf")
 
 		pdf_fields = {
-		'full_name' => user.full_name,
-		'email' => user.email,
-		'address' => user.address
+			'full_name' => user.full_name,
+			'user_name' => user.full_name,
+			'email' => user.email,
+			'address' => user.address
 		}
 
 		pdftk = PdfForms.new('/usr/bin/pdftk')
-		pdftk.fill_form(pdf_path, filled_pdf.path, pdf_fields)
+		pdftk.fill_form(pdf_path, filled_pdf_path, pdf_fields)
 
-		filled_pdf.rewind
-		filled_pdf
+		filled_pdf_path.to_s
 	end
 end

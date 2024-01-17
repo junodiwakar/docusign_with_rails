@@ -23,5 +23,9 @@ module Docusign
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    DOCUSIGN_CONFIG = YAML.load_file(File.join(Rails.root, "/appsettings.yml"), aliases: true)[Rails.env]
+    DOCUSIGN_CONFIG.map do |k, v|
+      config.send("#{k}=", v)
+    end
   end
 end
